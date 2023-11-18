@@ -11,12 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
-.idea/encodings.xml
-.idea/misc.xml
-.mvn/wrapper/maven-wrapper.jar
-.mvn/wrapper/maven-wrapper.properties
-mvnw
-mvnw.cmd
+
 ### Eclipse ###
 .apt_generated
 .classpath
