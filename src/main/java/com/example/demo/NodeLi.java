@@ -1,15 +1,14 @@
 package com.example.demo;
 
-public class Node {
+public class NodeLi {
     int x, y, dist;
-    Node prev;
+    NodeLi prev;
 
-    Node(int x, int y, int dist, Node prev)
+    NodeLi(int x, int y, int dist, NodeLi prev)
     {
         this.x = x;
         this.y = y;
         this.dist = dist;
         this.prev = prev;
     }
-
 }
