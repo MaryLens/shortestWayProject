@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import javafx.animation.PauseTransition;
-import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
 
@@ -11,12 +10,12 @@ import java.util.List;
 import java.util.Queue;
 
 public class AlgorithmLi {
-    private Map map;
+    private Mapaa map;
     private boolean[][] path;
     private boolean[][] visited;
     private List<Integer[]> pathList = new ArrayList<>();
 
-    public AlgorithmLi(Map map) {
+    public AlgorithmLi(Mapaa map) {
         this.map = map;
         path = new boolean[map.getWIDTH()][map.getHEIGHT()];
         visited = new boolean[map.getWIDTH()][map.getHEIGHT()];
@@ -35,7 +34,7 @@ public class AlgorithmLi {
     }
 
     //algorithm Li
-    int findShortestPathLi(int[][] mat, int i, int j, int x, int y, GraphicsContext gc) {
+    int findShortestPathLi(int[][] mat, int i, int j, int x, int y) {
         int[] row = map.getRow();
         int[] col = map.getCol();
         if (mat == null || mat.length == 0 || mat[i][j] == 0 || mat[x][y] == 0) {
@@ -71,7 +70,6 @@ public class AlgorithmLi {
             for (int k = 0; k < 8; k++) {
                 if (map.isValid(mat, visited, i + row[k], j + col[k], row[k], col[k])) {
                     visited[i + row[k]][j + col[k]] = true;
-                        map.drawMap(gc, visited, path);
                     q.add(new NodeLi(i + row[k], j + col[k], dist + 1, nodeLi));
                 }
             }

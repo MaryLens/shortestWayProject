@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b31e0187-db8b-4a97-be7f-747ed6e90d5a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AlgorithmAStar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AlgorithmDijkstra.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AlgorithmLi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Map.java" afterDir="false" />
+    <list default="true" id="b31e0187-db8b-4a97-be7f-747ed6e90d5a" name="Changes" comment="more structured">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AStar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AlgorithmDijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AlgorithmDijkstra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AlgorithmLi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AlgorithmLi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/NodeLi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Mapaa.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +80,31 @@
       <workItem from="1700480665602" duration="1996000" />
       <workItem from="1700580694864" duration="36000" />
       <workItem from="1700905830594" duration="11480000" />
-      <workItem from="1700925506566" duration="2608000" />
+      <workItem from="1700925506566" duration="3247000" />
+      <workItem from="1701095829310" duration="126000" />
+      <workItem from="1702457706488" duration="83000" />
+      <workItem from="1702469578517" duration="59000" />
+      <workItem from="1705848100105" duration="5249000" />
+      <workItem from="1706025241328" duration="68000" />
+      <workItem from="1706086224359" duration="627000" />
+      <workItem from="1706112378066" duration="1284000" />
+      <workItem from="1706190014226" duration="20259000" />
     </task>
+    <task id="LOCAL-00001" summary="more structured">
+      <created>1700928315336</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700928315336</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="more structured" />
+    <option name="LAST_COMMIT_MESSAGE" value="more structured" />
   </component>
 </project>

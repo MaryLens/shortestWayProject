@@ -3,7 +3,7 @@ package com.example.demo;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Map {
+public class Mapaa {
     //map parameters
     private final int WIDTH = 56;
     private final int HEIGHT = 70;
@@ -37,9 +37,9 @@ public class Map {
                 } else if (map[x][y] == 0) {
                     gc.setFill(Color.BLACK);
                 } else if (path[x][y]) {
-                    gc.setFill(Color.CHARTREUSE);
+                    gc.setFill(Color.web("800080"));
                 } else if (visited[x][y]) {
-                    gc.setFill(Color.YELLOW);
+                    gc.setFill(Color.web("DDA0DD",0.8));
                 } else {
                     gc.setFill(javafx.scene.paint.Color.WHITE);
                 }
@@ -100,7 +100,7 @@ public class Map {
         return true;
     }
 
-    public Map() {
+    public Mapaa() {
     }
 
     public int getWIDTH() {
@@ -198,6 +198,7 @@ public class Map {
         map[22][1] = 1;
         map[23][1] = 1;
         map[24][1] = 1;
+        map[25][1] = 1;
         map[26][1] = 1;
         map[30][1] = 1;
         map[45][1] = 1;
@@ -663,7 +664,7 @@ public class Map {
         map[45][40] = 1;
         map[52][40] = 1;
 
-        map[8][41] = 8;
+        map[7][41] = 8;
         map[10][41] = 7;
         map[16][41] = 1;
         map[19][41] = 1;
@@ -694,7 +695,7 @@ public class Map {
 
         map[5][44] = 3;
         map[8][44] = 5;
-        map[5][44] = 3;
+        map[9][44] = 7;
         map[15][44] = 1;
         map[20][44] = 1;
         map[33][44] = 1;

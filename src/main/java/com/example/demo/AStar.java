@@ -1,17 +1,18 @@
 package com.example.demo;
+
 import javafx.animation.PauseTransition;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
 
 import java.util.*;
 
-public class AlgorithmDijkstra {
+public class AStar {
+    Mapaa map;
     private  Graph graph;
-    private Mapaa map;
     private boolean[][] path;
     private boolean[][] visited;
     private List<Integer[]> pathList = new ArrayList<>();
-    public AlgorithmDijkstra(Mapaa map){
+    public AStar(Mapaa map){
         this.map = map;
         this.graph = new Graph(map);
         path = new boolean[map.getWIDTH()][map.getHEIGHT()];
@@ -26,7 +27,7 @@ public class AlgorithmDijkstra {
     public List<Integer[]> getPathList() {
         return pathList;
     }
-    public int dijkstra(int startX, int startY, int endX, int endY) {
+    public int aStar(int startX, int startY, int endX, int endY) {
         Node start = new Node(startX, startY);
         Node end = new Node(endX, endY);
         for (Node n: graph.getNodes()) {
@@ -36,48 +37,66 @@ public class AlgorithmDijkstra {
                 end = n;
             }
         }
-        Map<Node, Integer> distance = new HashMap<>();
-        Map<Node, Node> previous = new HashMap<>();
-        PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(distance::get));
+        Map<Node, Integer> gScore = new HashMap<>();
+        Map<Node, Integer> fScore = new HashMap<>();
+        Map<Node, Node> cameFrom = new HashMap<>();
 
-        distance.put(start, 0);
-        priorityQueue.offer(start);
+        PriorityQueue<Node> openSet = new PriorityQueue<>(Comparator.comparingInt(fScore::get));
+
+        gScore.put(start, 0);
+        fScore.put(start, getHeuristic(start, end));
+        openSet.offer(start);
 
         for (Node node : graph.getNodes()) {
             if (node != start) {
-                distance.put(node, Integer.MAX_VALUE);
+                gScore.put(node, Integer.MAX_VALUE);
+                fScore.put(node, Integer.MAX_VALUE);
             }
         }
 
-        while (!priorityQueue.isEmpty()) {
-            Node current = priorityQueue.poll();
+        while (!openSet.isEmpty()) {
+            Node current = openSet.poll();
+
+            if (current == end) {
+                reconstructPath(cameFrom, end);
+                return 1;
+            }
+
             for (Node neighbor : current.getNeighbors()) {
-                int newDist = distance.get(current) + getDistanceBetweenNodes(current, neighbor);
-                if (distance.containsKey(neighbor) && newDist < distance.get(neighbor)) {
-                    visited[neighbor.getX()][neighbor.getY()] = true;
-                    distance.put(neighbor, newDist);
-                    previous.put(neighbor, current);
-                    priorityQueue.offer(neighbor);
+                visited[neighbor.getX()][neighbor.getY()] = true;
+                int tentativeGScore = gScore.get(current) + getDistanceBetweenNodes(current, neighbor);
+
+                if (tentativeGScore < gScore.get(neighbor)) {
+                    cameFrom.put(neighbor, current);
+                    gScore.put(neighbor, tentativeGScore);
+                    fScore.put(neighbor, tentativeGScore + getHeuristic(neighbor, end));
+
+                    if (!openSet.contains(neighbor)) {
+                        openSet.offer(neighbor);
+                    }
                 }
             }
         }
 
+        System.out.println("No path found.");
+        return -1;
+    }
+
+    private static int getHeuristic(Node node, Node end) {
+        return Math.abs(node.getX() - end.getX()) + Math.abs(node.getY() - end.getY());
+    }
+
+    private  void reconstructPath(Map<Node, Node> cameFrom, Node current) {
         List<Node> path = new ArrayList<>();
-        Node current = end;
-        if (distance.get(end) == null ||distance.get(end) == Integer.MAX_VALUE) {
-            System.out.println("No path found.");
-            return -1;
-        }
-        int dist = distance.get(end);
         while (current != null) {
-            path.add(current);
             pathList.add(new Integer[]{current.getX(), current.getY()});
-            current = previous.get(current);
+            path.add(current);
+            current = cameFrom.get(current);
         }
         Collections.reverse(path);
-        return dist;
 
     }
+
     void displayPathStepByStep(GraphicsContext gc, int stepDelayMillis) {
         if (pathList.size() > 0) {
             Integer[] pathCoords = pathList.remove(pathList.size() - 1);
